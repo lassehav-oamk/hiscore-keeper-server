@@ -7,8 +7,6 @@ var app = express();
 app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
-/*var Cat = mongoose.model('Cat', { name: String });*/
 
 var scoreSchema = mongoose.Schema({ name: String, value: Number },
                              { timestamps: true });
@@ -41,8 +39,7 @@ app.post('/scores', (req, res) => {
                     }).catch(e => {
                         console.log(e);
                         res.sendStatus(500);
-                    });
-    
+                    });    
 })
 
 app.listen(app.get('port'), function() {
