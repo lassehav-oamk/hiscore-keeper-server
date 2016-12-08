@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 app.get('/scores', (req, res) => {
     score.find({}).sort({value: -1, createdAt: -1}).exec().then(results => {
-        res.json(results);
+        res.json({scores: results});
     })
 })
 
